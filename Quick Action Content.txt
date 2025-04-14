@@ -4,9 +4,10 @@ do
 	mountedFolder=$(/usr/bin/awk -F/ '{print $3}' <<<"$filePath")
 	restOfPath="${filePath#*$mountedFolder}"
 	fileServer=$(mount -t smbfs,afp | /usr/bin/awk -v folder="$mountedFolder" -F"@|/" '$0~folder {print $4}')
+	protocol=$(mount -t smbfs,afp | /usr/bin/awk -v folder="$mountedFolder" -F",|\\\(" '$0~folder {print $2}')
 	if [[ "$fileServer" = "" ]]; then
 		echo "File not on a file share" | pbcopy
 	else
-		echo "smb://${fileServer}/${mountedFolder}${restOfPath}" | pbcopy
+		echo "${protocol}://${fileServer}/${mountedFolder}${restOfPath}" | pbcopy
 	fi
 done
