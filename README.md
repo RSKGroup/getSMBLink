@@ -7,4 +7,4 @@ The action will run and put a link on your clipboard in the form smb://server/sh
 Or to create your own, open Automator, select Quick Action, and then drag a Shell Script action into the workflow.  
 The text of the script is in Quick Action Content.txt.
 Also be sure to change the header to recieve files or folders in Finder.  
-![A screen shot of the configured Automator window] (Automator Screenshot.png)
+![A screen shot of the configured Automator window](Automator Screenshot.png)
